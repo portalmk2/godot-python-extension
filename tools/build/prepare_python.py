@@ -84,7 +84,9 @@ def prepare_for_platform(platform: str, arch: str,
 	dest_dir.mkdir(parents=True, exist_ok=True)
 
 	shutil.copy2(src / config.so_path, dest_dir)
-	subprocess.run(['strip', '-s', str(dest_dir / pathlib.Path(config.so_path).name)], check=True)
+	
+	if platform != "windows":
+		subprocess.run(['strip', '-s', str(dest_dir / pathlib.Path(config.so_path).name)], check=True)
 
 	if (src / config.python_ext_dir).exists():
 		dest_ext_dir = dest_dir / 'python3.12' / 'lib-dynload'

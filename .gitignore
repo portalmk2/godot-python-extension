@@ -11,3 +11,8 @@ extension_api.json
 /docs/*build/
 
 
+**/__pycache__/
+
+# msvc
+src/**/*.obj
+tools/build/msvc_capture.log
